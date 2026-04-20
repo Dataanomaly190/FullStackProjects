@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,300;0,400;0,700;0,900;1,200;1,300;1,400&family=Manrope:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface: #fcf9f8;
+  --surface-container: #f0edec;
+  --surface-container-low: #f6f3f2;
+  --surface-container-lowest: #ffffff;
+  --surface-container-high: #ebe7e7;
+  --surface-container-highest: #e5e2e1;
+  --surface-dim: #dcd9d9;
+  --on-surface: #1c1b1b;
+  --on-surface-variant: #3f4946;
+  --primary: #003b34;
+  --primary-container: #04544b;
+  --on-primary: #ffffff;
+  --secondary: #b90d1d;
+  --outline-variant: #bfc9c5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--on-surface);
+  font-family: "Manrope", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Glass Utility ── */
+.bg-glass {
+  background-color: rgba(252, 249, 248, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ── Gradient Button ── */
+.btn-primary-gradient {
+  background: linear-gradient(135deg, #003b34 0%, #04544b 100%);
+}
+.btn-primary-gradient:hover {
+  opacity: 0.88;
+}
+
+/* ── Ambient Shadow ── */
+.ambient-shadow {
+  box-shadow: 0px 8px 40px rgba(28, 27, 27, 0.06);
+}
+
+/* ── Ghost Border ── */
+.ghost-border {
+  border: 1px solid rgba(191, 201, 197, 0.25);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 59, 52, 0.25);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* ── Hero Video Iframe ── */
+.hero-video-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+.hero-video-wrapper iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 177.78vh;
+  min-height: 56.25vw;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: grayscale(100%) contrast(1.2) brightness(0.55);
+}
+
+/* ── Stagger helpers ── */
+.stagger-1 { animation-delay: 0.1s; opacity: 0; }
+.stagger-2 { animation-delay: 0.25s; opacity: 0; }
+.stagger-3 { animation-delay: 0.4s; opacity: 0; }
+.stagger-4 { animation-delay: 0.55s; opacity: 0; }
+
+/* ── Grain overlay ── */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Custom Animations ── */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% / 3)); }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}

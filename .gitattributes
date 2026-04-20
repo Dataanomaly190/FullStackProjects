@@ -1,0 +1,5 @@
+*.node filter=lfs diff=lfs merge=lfs -text
+News/Server/Datasets/news.csv filter=lfs diff=lfs merge=lfs -text
+News/Server/Datasets/news.json filter=lfs diff=lfs merge=lfs -text
+News/Server/Datasets/news.zip filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
